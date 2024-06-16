@@ -11,12 +11,12 @@ const UpdateStudentDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [student, setStudent] = useState({});
-    const { authorizationToken , courseData } = useAuth();
+    const { authorizationToken, courseData, api } = useAuth();
     const [inputError, setInputError] = useState("");
 
     const getSingleStudent = async () => {
         try {
-            const response = await fetch(`http://localhost:4000/singleStudent/${id}`, {
+            const response = await fetch(`${api}/singleStudent/${id}`, {
                 method: "GET",
                 headers: {
                     Authorization: authorizationToken
@@ -50,7 +50,7 @@ const UpdateStudentDetails = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:4000/updateStudent/${id}`, {
+            const response = await fetch(`${api}/updateStudent/${id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -62,7 +62,7 @@ const UpdateStudentDetails = () => {
             if (response.ok) {
                 toast.success("Student Details Updated Successfully");
                 navigate("/view-student");
-            }else{
+            } else {
                 toast.error("Error In Updating Student Details")
             }
         } catch (error) {
@@ -168,10 +168,10 @@ const UpdateStudentDetails = () => {
                                         <label htmlFor='jobResponse'>Job Responsibility</label>
                                         <div className='flex'>
                                             <div className='d-flex align-items-center mx-2' style={{ height: '30px' }}>
-                                                <input type="radio" name="jobResponse" id="jobResponse" value="Yes" onChange={() => setJob("Yes")} checked={job==="No"}/> Yes
+                                                <input type="radio" name="jobResponse" id="jobResponse" value="Yes" onChange={() => setJob("Yes")} checked={job === "No"} /> Yes
                                             </div>
                                             <div className='d-flex align-items-center mx-2' style={{ height: '30px' }}>
-                                                <input type="radio" name="jobResponse" id="jobResponse" value="No" onChange={() => setJob("No")} checked={job==="No"}/> no
+                                                <input type="radio" name="jobResponse" id="jobResponse" value="No" onChange={() => setJob("No")} checked={job === "No"} /> no
                                             </div>
                                         </div>
                                     </Col>
@@ -226,10 +226,10 @@ const UpdateStudentDetails = () => {
                                         <label htmlFor='pc_laptop'>PC/Laptop</label>
                                         <div className='d-flex'>
                                             <div className='d-flex align-items-center mx-2' style={{ height: '30px' }}>
-                                                <input type="radio" name="pc_laptop" id="pc_laptop" value="Yes" onChange={() => setPcLaptop("Yes")} checked={pcLaptop==="No"} /> Yes
+                                                <input type="radio" name="pc_laptop" id="pc_laptop" value="Yes" onChange={() => setPcLaptop("Yes")} checked={pcLaptop === "No"} /> Yes
                                             </div>
                                             <div className='d-flex align-items-center mx-2' style={{ height: '30px' }}>
-                                                <input type="radio" name="pc_laptop" id="pc_laptop" value="No" onChange={() => setPcLaptop("No")} checked={pcLaptop==="No"} /> no
+                                                <input type="radio" name="pc_laptop" id="pc_laptop" value="No" onChange={() => setPcLaptop("No")} checked={pcLaptop === "No"} /> no
                                             </div>
                                         </div>
                                     </Col>
@@ -253,10 +253,10 @@ const UpdateStudentDetails = () => {
                                         <label htmlFor='laptopCompulsory'>Laptop Compalsory</label>
                                         <div className='d-flex'>
                                             <div className='d-flex align-items-center mx-2' style={{ height: '30px' }}>
-                                                <input type="radio" name="laptopCompulsory" id="laptopCompulsory" value="Yes" onChange={() => setlaptopCompulsory("Yes")} checked={laptopCompulsory==="No"} /> Yes
+                                                <input type="radio" name="laptopCompulsory" id="laptopCompulsory" value="Yes" onChange={() => setlaptopCompulsory("Yes")} checked={laptopCompulsory === "No"} /> Yes
                                             </div>
                                             <div className='d-flex align-items-center mx-2' style={{ height: '30px' }}>
-                                                <input type="radio" name="laptopCompulsory" id="laptopCompulsory" value="No" onChange={() => setlaptopCompulsory("No")} checked={laptopCompulsory==="No"} /> no
+                                                <input type="radio" name="laptopCompulsory" id="laptopCompulsory" value="No" onChange={() => setlaptopCompulsory("No")} checked={laptopCompulsory === "No"} /> no
                                             </div>
                                         </div>
                                     </Col>

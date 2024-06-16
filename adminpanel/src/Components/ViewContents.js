@@ -8,10 +8,10 @@ const ViewContents = () => {
 
   const [show, setShow] = useState(false);
   const [updateId, setUpdateId] = useState('');
-  const { authorizationToken, allCourseContent, getAllCourseContent, updateContentStatus } = useAuth();
+  const { authorizationToken, allCourseContent, getAllCourseContent, updateContentStatus, api } = useAuth();
   const [deleteId, setDeletedId] = useState('');
   const [modelUpdateData, setModelUpdateData] = useState([]);
-  const [deletedContent,setDeletedContent] = useState("");
+  const [deletedContent, setDeletedContent] = useState("");
   const [inputError, setInputError] = useState("");
 
   const handleClose = () => {
@@ -24,7 +24,7 @@ const ViewContents = () => {
     setShow(true)
     setUpdateId(id);
     try {
-      const response = await fetch(`http://localhost:4000/getCourseContent/${id}`, {
+      const response = await fetch(`${api}/getCourseContent/${id}`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken
@@ -50,7 +50,7 @@ const ViewContents = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:4000/updateCourseContent/${updateId}`, {
+      const response = await fetch(`${api}/updateCourseContent/${updateId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,7 +77,7 @@ const ViewContents = () => {
 
   const deleteContent = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/deleteCourseContent/${deleteId}`, {
+      const response = await fetch(`${api}/deleteCourseContent/${deleteId}`, {
         method: "POST",
         headers: {
           Authorization: authorizationToken
@@ -86,7 +86,7 @@ const ViewContents = () => {
 
       if (response.ok) {
         toast.success("Course Deleted Successfully");
-        updateContentStatus(deletedContent,"0")
+        updateContentStatus(deletedContent, "0")
         setDeletedId('');
         setShow(false);
         getAllCourseContent();
@@ -98,7 +98,7 @@ const ViewContents = () => {
     }
   };
 
-  const handleDelete = (id,course) => {
+  const handleDelete = (id, course) => {
     setShow(true);
     setDeletedId(id);
     setDeletedContent(course);
@@ -106,7 +106,7 @@ const ViewContents = () => {
 
   useEffect(() => {
     getAllCourseContent();
-  },[]);
+  }, []);
 
   return (
     <>
@@ -146,7 +146,7 @@ const ViewContents = () => {
                             <td>{val.duration}</td>
                             <td>
                               <i className="fa-regular fa-pen-to-square cursor-pointer text-purple-500 mr-3" onClick={() => handleShow(val._id)}></i>
-                              <i className="fa-solid fa-trash cursor-pointer text-red-500" onClick={() => handleDelete(val._id,val.course)}></i>
+                              <i className="fa-solid fa-trash cursor-pointer text-red-500" onClick={() => handleDelete(val._id, val.course)}></i>
                             </td>
                           </tr>
                         )

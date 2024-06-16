@@ -9,10 +9,10 @@ const AddContents = () => {
         course: "",
         fees: "",
         duration: "",
-        courseContents:""
+        courseContents: ""
     }
 
-    const { authorizationToken, courseWoContent, getCourseWoContent ,updateContentStatus} = useAuth();
+    const { authorizationToken, courseWoContent, getCourseWoContent, updateContentStatus, api } = useAuth();
     const [courseContent, setCourseContent] = useState(courseContentObj);
     const [inputError, setInputError] = useState("");
 
@@ -24,25 +24,10 @@ const AddContents = () => {
         });
     };
 
-    // const updateContentStatus = async (course) => {
-    //     try {
-    //         const response = await fetch(`http://localhost:4000/updateCourseContentStatus/${course}`, {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 Authorization: authorizationToken
-    //             },
-    //             body: JSON.stringify({ contentStatus: "1" })
-    //         });
-    //     } catch (error) {
-    //         console.log("Error from updating content status : ", error);
-    //     }
-    // }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:4000/addCourseContent/${courseContent.course}`, {
+            const response = await fetch(`${api}/addCourseContent/${courseContent.course}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -54,7 +39,7 @@ const AddContents = () => {
             var data = await response.json();
 
             if (response.ok) {
-                updateContentStatus(courseContent.course,"1");
+                updateContentStatus(courseContent.course, "1");
                 toast.success("Course Content Added Successfully");
                 setCourseContent(courseContentObj);
                 navigate("/view-contents");
@@ -68,7 +53,7 @@ const AddContents = () => {
 
     useEffect(() => {
         getCourseWoContent();
-    },[])
+    }, [])
 
     return (
         <>

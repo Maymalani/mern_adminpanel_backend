@@ -8,8 +8,8 @@ const ViewCourse = () => {
 
   const [show, setShow] = useState(false);
   const [updateId, setUpdateId] = useState('');
-  const { authorizationToken , getAllCourse , courseData} = useAuth();
-  const [deleteId,setDeletedId] = useState('');
+  const { authorizationToken, getAllCourse, courseData, api } = useAuth();
+  const [deleteId, setDeletedId] = useState('');
   const [inputError, setInputError] = useState("");
 
   const handleClose = () => {
@@ -25,7 +25,7 @@ const ViewCourse = () => {
     setUpdateId(id);
     setShow(true);
     try {
-      const response = await fetch(`http://localhost:4000/getCourse/${id}`, {
+      const response = await fetch(`${api}/getCourse/${id}`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken
@@ -51,7 +51,7 @@ const ViewCourse = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:4000/updateCourse/${updateId}`, {
+      const response = await fetch(`${api}/updateCourse/${updateId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const ViewCourse = () => {
         setUpdateId("");
         getAllCourse();
         toast.success("Course Updated Successfully")
-      }else{
+      } else {
         setInputError(data.extraDetails ? data.extraDetails : data.message)
       }
     } catch (error) {
@@ -82,29 +82,29 @@ const ViewCourse = () => {
 
   const deleteCourse = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4000/deleteCourse/${id}`,{
-        method:"POST",
-        headers:{
-          Authorization:authorizationToken
+      const response = await fetch(`${api}/deleteCourse/${id}`, {
+        method: "POST",
+        headers: {
+          Authorization: authorizationToken
         }
       });
 
-      if(response.ok){
+      if (response.ok) {
         toast.success("Course Deleted Successfully");
         setDeletedId('');
         setShow(false);
         getAllCourse();
-      }else{
+      } else {
         toast.error("Error in deleting course");
       }
     } catch (error) {
-      console.log("Error from delete course : ",error);
+      console.log("Error from delete course : ", error);
     }
   }
 
   useEffect(() => {
     getAllCourse();
-  },[])
+  }, [])
 
   return (
     <>

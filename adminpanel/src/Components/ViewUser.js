@@ -8,9 +8,9 @@ const ViewUser = () => {
 
   const [show, setShow] = useState(false);
   const [modelData, setModelData] = useState([]);
-  const { authorizationToken , getAllUsers , allUser } = useAuth();
+  const { authorizationToken, getAllUsers, allUser, api } = useAuth();
   const [updateId, setUpdateId] = useState("");
-  const [deleteId,setDeletedId] = useState("");
+  const [deleteId, setDeletedId] = useState("");
   const [inputError, setInputError] = useState("");
 
   const modelClose = () => {
@@ -23,7 +23,7 @@ const ViewUser = () => {
     try {
       setUpdateId(id);
       setShow(true);
-      const response = await fetch(`http://localhost:4000/getuser/${id}`, {
+      const response = await fetch(`${api}/getuser/${id}`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken
@@ -46,7 +46,7 @@ const ViewUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:4000/updateuser/${updateId}`, {
+      const response = await fetch(`${api}/updateuser/${updateId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const ViewUser = () => {
 
   const deleteUser = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4000/deleteuser/${id}`, {
+      const response = await fetch(`${api}/deleteuser/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: authorizationToken
@@ -98,7 +98,7 @@ const ViewUser = () => {
 
   useEffect(() => {
     getAllUsers();
-  },[]);
+  }, []);
 
   return (
     <>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink , useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useAuth } from '../auth/Store';
 
 const AddUser = () => {
 
@@ -15,6 +16,7 @@ const AddUser = () => {
   const [userData, setUserData] = useState(addUserObj);
   const [inputError, setInputError] = useState("");
   const navigate = useNavigate();
+  const { api } = useAuth();
 
   const inputHandle = (e) => {
     const { name, value } = e.target;
@@ -26,7 +28,7 @@ const AddUser = () => {
   const submitHandle = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/register', {
+      const response = await fetch(`${api}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

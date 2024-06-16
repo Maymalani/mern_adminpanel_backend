@@ -1,6 +1,6 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
-import { NavLink , useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { toast } from 'react-toastify';
@@ -10,7 +10,7 @@ const AddStudent = () => {
 
   const [job, setJob] = useState("No");
   const [pcLaptop, setPcLaptop] = useState("No");
-  const [laptopCompulsory, setlaptopCompulsory] = useState("No");
+  const [laptopCompulsory, setlaptopCompulsory] = useState("No")
 
   const studentObj = {
     surname: "",
@@ -46,7 +46,7 @@ const AddStudent = () => {
   }
 
   const [student, setStudent] = useState(studentObj);
-  const { authorizationToken , courseData} = useAuth();
+  const { authorizationToken, courseData, api } = useAuth();
   const [file, setFile] = useState();
   const navigate = useNavigate();
 
@@ -65,7 +65,7 @@ const AddStudent = () => {
       // formData.getAll('student',student)
       // formData.append('student',JSON.stringify(student));
       // formData.append('other',JSON.stringify({jobResponse: job,pc_laptop: pcLaptop,laptopCompulsory: laptopCompulsory}))
-      const response = await fetch('http://localhost:4000/studentUpload',
+      const response = await fetch(`${api}/studentUpload`,
         // formData
         // ,
         {
@@ -225,10 +225,10 @@ const AddStudent = () => {
                     <label htmlFor='jobResponse'>Job Responsibility</label>
                     <div className='flex'>
                       <div className='d-flex align-items-center mx-2' style={{ height: '30px' }}>
-                        <input type="radio" name="jobResponse" id="jobResponse" value="Yes" onChange={() => setJob("Yes")} checked={job==="Yes"} /> Yes
+                        <input type="radio" name="jobResponse" id="jobResponse" value="Yes" onChange={() => setJob("Yes")} checked={job === "Yes"} /> Yes
                       </div>
                       <div className='d-flex align-items-center mx-2' style={{ height: '30px' }}>
-                        <input type="radio" name="jobResponse" id="jobResponse" value="No" onChange={() => setJob("No")} checked={job==="No"} /> no
+                        <input type="radio" name="jobResponse" id="jobResponse" value="No" onChange={() => setJob("No")} checked={job === "No"} /> no
                       </div>
                     </div>
                   </Col>
@@ -283,10 +283,10 @@ const AddStudent = () => {
                     <label htmlFor='pc_laptop'>PC/Laptop</label>
                     <div className='d-flex'>
                       <div className='d-flex align-items-center mx-2' style={{ height: '30px' }}>
-                        <input type="radio" name="pc_laptop" id="pc_laptop" value="Yes" onChange={() => setPcLaptop("Yes")} checked={pcLaptop==="Yes"}/> Yes
+                        <input type="radio" name="pc_laptop" id="pc_laptop" value="Yes" onChange={() => setPcLaptop("Yes")} checked={pcLaptop === "Yes"} /> Yes
                       </div>
                       <div className='d-flex align-items-center mx-2' style={{ height: '30px' }}>
-                        <input type="radio" name="pc_laptop" id="pc_laptop" value="No" onChange={() => setPcLaptop("No")} checked={pcLaptop==="No"}/> no
+                        <input type="radio" name="pc_laptop" id="pc_laptop" value="No" onChange={() => setPcLaptop("No")} checked={pcLaptop === "No"} /> no
                       </div>
                     </div>
                   </Col>
@@ -310,10 +310,10 @@ const AddStudent = () => {
                     <label htmlFor='laptopCompulsory'>Laptop Compalsory</label>
                     <div className='d-flex'>
                       <div className='d-flex align-items-center mx-2' style={{ height: '30px' }}>
-                        <input type="radio" name="laptopCompulsory" id="laptopCompulsory" value="Yes" onChange={() => setlaptopCompulsory("Yes")} checked={laptopCompulsory==="Yes"}/> Yes
+                        <input type="radio" name="laptopCompulsory" id="laptopCompulsory" value="Yes" onChange={() => setlaptopCompulsory("Yes")} checked={laptopCompulsory === "Yes"} /> Yes
                       </div>
                       <div className='d-flex align-items-center mx-2' style={{ height: '30px' }}>
-                        <input type="radio" name="laptopCompulsory" id="laptopCompulsory" value="No" onChange={() => setlaptopCompulsory("No")} checked={laptopCompulsory==="No"}/> no
+                        <input type="radio" name="laptopCompulsory" id="laptopCompulsory" value="No" onChange={() => setlaptopCompulsory("No")} checked={laptopCompulsory === "No"} /> no
                       </div>
                     </div>
                   </Col>

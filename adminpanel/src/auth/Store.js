@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
     const [allUser, setAllUser] = useState([]);
     const [courseWoContent, setCourseWoContent] = useState([]);
     const [allCourseContent, setAllCourseContent] = useState([]);
+    const api = "http://localhost:4000"
 
     const storeTokenInLs = (token) => {
         setToken(token);
@@ -20,7 +21,7 @@ export const AuthProvider = ({ children }) => {
 
     const getAllCourse = async () => {
         try {
-            const response = await fetch('http://localhost:4000/getAllCourse', {
+            const response = await fetch(`${api}/getAllCourse`, {
                 method: "GET",
                 headers: {
                     Authorization: authorizationToken
@@ -38,7 +39,7 @@ export const AuthProvider = ({ children }) => {
 
     const getAllStudent = async () => {
         try {
-            const response = await fetch('http://localhost:4000/getAllStudent', {
+            const response = await fetch(`${api}/getAllStudent`, {
                 method: "GET",
                 headers: {
                     Authorization: authorizationToken
@@ -57,7 +58,7 @@ export const AuthProvider = ({ children }) => {
 
     const getAllUsers = async () => {
         try {
-            const response = await fetch('http://localhost:4000/alluser', {
+            const response = await fetch(`${api}/alluser`, {
                 method: "GET",
                 headers: {
                     Authorization: authorizationToken
@@ -75,7 +76,7 @@ export const AuthProvider = ({ children }) => {
 
     const getAllCourseContent = async () => {
         try {
-            const response = await fetch('http://localhost:4000/getAllCourseContent', {
+            const response = await fetch(`${api}/getAllCourseContent`, {
                 method: "GET",
                 headers: {
                     Authorization: authorizationToken
@@ -83,7 +84,6 @@ export const AuthProvider = ({ children }) => {
             });
 
             const data = await response.json();
-            console.log("1",data);
             setAllCourseContent(data);
         } catch (error) {
             console.log("Error from fetching all course content : ", error);
@@ -92,7 +92,7 @@ export const AuthProvider = ({ children }) => {
 
     const userAuthentication = async () => {
         try {
-            const response = await fetch('http://localhost:4000/user', {
+            const response = await fetch(`${api}/user`, {
                 method: "GET",
                 headers: {
                     Authorization: authorizationToken
@@ -110,7 +110,7 @@ export const AuthProvider = ({ children }) => {
 
     const getCourseWoContent = async () => {
         try {
-            const response = await fetch('http://localhost:4000/withoutContentCourse', {
+            const response = await fetch(`${api}/withoutContentCourse`, {
                 method: "GET",
                 headers: {
                     Authorization: authorizationToken
@@ -127,9 +127,8 @@ export const AuthProvider = ({ children }) => {
     }
 
     const updateContentStatus = async (course, status) => {
-        console.log(course,status);
         try {
-            const response = await fetch(`http://localhost:4000/updateCourseContentStatus/${course}`, {
+            const response = await fetch(`${api}/updateCourseContentStatus/${course}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -159,7 +158,7 @@ export const AuthProvider = ({ children }) => {
     }, [token]);
 
     return (
-        <AuthContext.Provider value={{ storeTokenInLs, isLoggedIn, Logout, authorizationToken, user, getAllStudent, getAllCourse, allUser, getAllUsers, courseData, allStudentData, getCourseWoContent, courseWoContent, allCourseContent, getAllCourseContent, updateContentStatus }}>
+        <AuthContext.Provider value={{api, storeTokenInLs, isLoggedIn, Logout, authorizationToken, user, getAllStudent, getAllCourse, allUser, getAllUsers, courseData, allStudentData, getCourseWoContent, courseWoContent, allCourseContent, getAllCourseContent, updateContentStatus }}>
             {children}
         </AuthContext.Provider>
     )

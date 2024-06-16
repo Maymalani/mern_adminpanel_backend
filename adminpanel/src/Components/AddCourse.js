@@ -5,11 +5,12 @@ import { toast } from 'react-toastify'
 
 const AddCourse = () => {
 
-  const { user, authorizationToken } = useAuth();
+  const { user, authorizationToken, api } = useAuth();
   var userEmail;
   if (user) {
     userEmail = user.email;
   }
+  console.log(userEmail);
   const courseObj = {
     addedBy: userEmail,
     course: ''
@@ -29,7 +30,7 @@ const AddCourse = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:4000/addCourse`, {
+      const response = await fetch(`${api}/addCourse`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

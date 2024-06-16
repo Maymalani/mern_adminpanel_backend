@@ -8,19 +8,17 @@ import errorImage from "../assets/Capture.JPG"
 const ViewStudent = () => {
 
   const [tableData, setTableData] = useState([]);
-  const { authorizationToken , allStudentData , getAllStudent } = useAuth();
+  const { authorizationToken, allStudentData, getAllStudent, api } = useAuth();
   const [show, setShow] = useState(false);
   const [imageUpdateId, setImageUpdateId] = useState("");
   const [studentData, setStudentData] = useState([]);
   const [search, setSearch] = useState("");
   const [file, setFile] = useState();
 
-  
-
   const handleShow = async (id) => {
     setShow(true);
     try {
-      const response = await fetch(`http://localhost:4000/singleStudent/${id}`, {
+      const response = await fetch(`${api}/singleStudent/${id}`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken
@@ -38,7 +36,7 @@ const ViewStudent = () => {
 
   const searchFun = async () => {
     if (search.length > 0) {
-      const response = await fetch(`http://localhost:4000/searchStudent/${search}`, {
+      const response = await fetch(`${api}/searchStudent/${search}`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken
@@ -73,7 +71,7 @@ const ViewStudent = () => {
     try {
       const formData = new FormData();
       formData.append('file', file);
-      const response = await fetch(`http://localhost:4000/student/uploadPic/${imageUpdateId}`, {
+      const response = await fetch(`${api}/student/uploadPic/${imageUpdateId}`, {
         method: "POST",
         headers: {
           Authorization: authorizationToken
@@ -96,7 +94,7 @@ const ViewStudent = () => {
   const deleteImage = async (id) => {
     const result = window.confirm("Are You Sure To Delete Images ?")
     if (result) {
-      const response = await fetch(`http://localhost:4000/student/deletePic/${id}`, {
+      const response = await fetch(`${api}/student/deletePic/${id}`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken
@@ -111,10 +109,6 @@ const ViewStudent = () => {
       }
     }
   }
-
-  // if(searchStudent){
-  //   setTableData(searchStudent)
-  // }
 
   return (
     <>
@@ -150,7 +144,7 @@ const ViewStudent = () => {
                   <tbody>
                     {
 
-                      allStudentData.length > 0 ? tableData.map((val, ind) => {
+                      allStudentData.length > 0 ? allStudentData.map((val, ind) => {
                         return (
                           <tr key={ind}>
                             <td>{ind + 1}</td>
