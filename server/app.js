@@ -14,7 +14,7 @@ require('./dbConnection/dbConnection')
 var app = express();
 
 var corsOption = {
-  origin:"https://mern-adminpanel1-bwj1.vercel.app",
+  origin:"https://mern-adminpanel1.vercel.app",
   methods:"GET,POST,PUT,PATCH,DELETE,HEAD",
   credential:true
 };
