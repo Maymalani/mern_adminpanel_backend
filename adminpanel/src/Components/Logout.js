@@ -4,11 +4,11 @@ import { Navigate } from 'react-router-dom';
 
 const Logout = () => {
 
-    const { Logout } = useAuth();
+  const { Logout } = useAuth();
 
-    useEffect(() => {
-        Logout();
-    },[Logout]);
+  useEffect(() => {
+    Logout();
+  }, [Logout]);
 
   return (
     <Navigate to="/"></Navigate>
