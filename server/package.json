@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "start ./bin/www",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix adminpanel && npm run build --prefix adminpanel"
+    "start": "start ./bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
