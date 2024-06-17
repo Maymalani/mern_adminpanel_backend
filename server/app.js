@@ -48,4 +48,11 @@ app.use(function(req, res, next) {
 // error handler
 app.use(errorMiddleware);
 
+if (process.env.NODE_ENV === 'production') {
+  //*Set static folder up in production
+  app.use(express.static('adminpanel/build'));
+
+  app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'adminpanel', 'build','index.html')));
+}
+
 module.exports = app;
