@@ -43,4 +43,8 @@ app.use(function(req, res, next) {
 // error handler
 app.use(errorMiddleware);
 
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static("adminpanel/build"))
+}
+
 module.exports = app;
