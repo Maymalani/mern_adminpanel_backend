@@ -13,6 +13,8 @@ require('./dbConnection/dbConnection')
 
 var app = express();
 
+app.use(cors())
+
 var corsOption = {
   origin:"https://mern-adminpanel1.vercel.app",
   methods:"GET,POST,PUT,PATCH,DELETE,HEAD",
