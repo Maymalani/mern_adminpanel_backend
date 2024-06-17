@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     const [allUser, setAllUser] = useState([]);
     const [courseWoContent, setCourseWoContent] = useState([]);
     const [allCourseContent, setAllCourseContent] = useState([]);
-    const api = "https://mern-adminpanel1.vercel.app"
+    const api = "https://mern-adminpanel.vercel.app"
 
     const storeTokenInLs = (token) => {
         setToken(token);
