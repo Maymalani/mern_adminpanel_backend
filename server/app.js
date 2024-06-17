@@ -24,7 +24,8 @@ var corsOption = {
 app.use(cors(corsOption));
 
 app.use((req,res,next) => {
-  res.setHeader("Access-Control-Allow-Origin",'*')
+  res.setHeader("Access-Control-Allow-Origin",'*');
+  next();
 })
 
 // view engine setup
