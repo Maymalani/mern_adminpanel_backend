@@ -22,7 +22,7 @@ var corsOption = {
 app.use(cors(corsOption));
 
 app.use((req,res,next) => {
-  res.setHeader("Access-Control-Allow-Origin",'https://mern-adminpanel1-bwj1.vercel.app')
+  res.setHeader("Access-Control-Allow-Origin",'*')
 })
 
 // view engine setup
