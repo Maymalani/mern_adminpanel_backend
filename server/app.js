@@ -10,6 +10,7 @@ var errorMiddleware = require('./middleware/errorMiddleware');
 require('dotenv').config();
 var cors = require('cors');
 require('./dbConnection/dbConnection')
+var path = require('path')
 
 var app = express();
 
