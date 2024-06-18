@@ -123,11 +123,10 @@ const ViewStudent = () => {
           <div className='flex justify-center items-center'>
             <div className='flex flex-col col-12 col-sm-12 col-md-10 shadow-lg rounded-md p-3'>
               <h1 className='text-2xl text-center mb-3 mr-2 sm:mr-0 sm:mb-0 text-purple-500 font-bold'>All Student</h1>
-              <div className='relative mx-auto mb-2 w-full sm:w-[70%] md:w-[40%] lg:w-[30%] -z-10'>
-                <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search Student Here ...' className='w-full border m-auto mb-3 border-black rounded-md pl-2 pr-8 py-1' />
-                <i className="fa-solid fa-magnifying-glass absolute right-1 top-2"></i>
-              </div>
               <span className='text-xs sm:text-xs md:text-sm lg:text-base lg:text-md text-center mb-2'> <span className='text-red-500 font-bold'>*</span> ( First Whatsapp is for student , Second Whatsapp is for parent In Action Div )</span>
+              <div className='mx-auto my-2 w-full sm:w-[70%] md:w-[40%] lg:w-[30%]'>
+                <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search Student Here ...' className='w-full border m-auto mb-3 border-black rounded-md pl-2 pr-8 py-1' />
+              </div>
               <div className="table-responsive">
                 <table className="table">
                   <caption>List of Students</caption>
