@@ -43,12 +43,13 @@ const ViewStudent = () => {
         }
       });
 
+      const data = await response.json();
+
       if (response.ok) {
-        const data = await response.json();
-        if (data.length > 0) {
-          setAllStudentData(data);
-        } else {
-          setAllStudentData(allStudentData)
+        if(data.length > 0){
+          setTableData(data);
+        }else{
+          setTableData([]);
         }
       }
     } else {
@@ -129,8 +130,11 @@ const ViewStudent = () => {
               <h1 className='text-2xl text-center mb-3 mr-2 sm:mr-0 sm:mb-0 text-purple-500 font-bold'>All Student</h1>
               <span className='text-xs sm:text-xs md:text-sm lg:text-base lg:text-md text-center mb-2'> <span className='text-red-500 font-bold'>*</span> ( First Whatsapp is for student , Second Whatsapp is for parent In Action Div )</span>
               <div className='mx-auto my-2 w-full sm:w-[70%] md:w-[40%] lg:w-[30%]'>
-                <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search Student Here ...' className='w-full border m-auto mb-3 border-black rounded-md pl-2 pr-8 py-1' />
+                <input type="text" placeholder='Search Student Here ...' value={search} onChange={(e) => setSearch(e.target.value)} className='w-full border m-auto mb-3 border-black rounded-md pl-2 pr-8 py-1'/>
               </div>
+              {/*<div className='mx-auto mb-2 w-full sm:w-[70%] md:w-[40%] lg:w-[30%] -z-10'>
+                <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search Student Here ...' className='w-full border m-auto mb-3 border-black rounded-md pl-2 pr-8 py-1' />
+              </div>*/}
               <div className="table-responsive">
                 <table className="table">
                   <caption>List of Students</caption>
@@ -147,7 +151,8 @@ const ViewStudent = () => {
                   <tbody>
                     {
 
-                      allStudentData.length > 0 ? allStudentData.map((val, ind) => {
+                      tableData.length > 0 ? 
+                      tableData.map((val, ind) => {
                         return (
                           <tr key={ind}>
                             <td>{ind + 1}</td>
@@ -171,10 +176,32 @@ const ViewStudent = () => {
                             </td>
                           </tr>
                         )
-                      }) :
-                        <tr>
-                          <td className='text-xl font-bold'>No Student Found</td>
-                        </tr>
+                      }):
+                      allStudentData.map((val, ind) => {
+                        return (
+                          <tr key={ind}>
+                            <td>{ind + 1}</td>
+                            <td>
+                              <div className='flex flex-col'>
+                                <img src={val.image ? `http://localhost:4000/Images/${val.image}` : errorImage} className='w-[80px] h-[100px] mr-2' alt={`${val.studentname}`} />
+                                <div className={`flex justify-start mt-2`}>
+                                  <i className={`fa-solid fa-pen mr-2 cursor-pointer`} onClick={() => modelImage(val._id)}></i>
+                                  <i className={`fa-solid fa-trash cursor-pointer text-red-500 ${val.image ? "block" : "hidden"}`} onClick={() => deleteImage(val._id)}></i>
+                                </div>
+                              </div>
+                            </td>
+                            <td className='capitalize'>{`${val.studentname} ${val.surname}`}</td>
+                            <td>{val.studentMobile}</td>
+                            <td>{val.parentMobile}</td>
+                            <td>
+                              <NavLink to={`/updateStudent/${val._id}`}><i className="fa-regular fa-pen-to-square cursor-pointer text-purple-500 mr-3" title='Update Student Data'></i></NavLink>
+                              <NavLink to={`https://wa.me/+91${val.studentMobile}?`} target='_blank' title='Student Whatsapp'><i className="fa-brands fa-whatsapp cursor-pointer text-green-500 mr-3"></i></NavLink>
+                              <NavLink to={`https://wa.me/+91${val.parentMobile}?`} target='_blank' title='Parent Whatsapp'><i className="fa-brands fa-whatsapp cursor-pointer text-green-500 mr-3"></i></NavLink>
+                              <i className="fa-solid fa-ellipsis-vertical cursor-pointer" title='More Details' onClick={() => handleShow(val._id)}></i>
+                            </td>
+                          </tr>
+                        )
+                      })                      
                     }
                   </tbody>
                 </table>
