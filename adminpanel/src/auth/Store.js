@@ -19,8 +19,6 @@ export const AuthProvider = ({ children }) => {
         return localStorage.setItem('token', token);
     }
 
-    console.log(api);
-
     const getAllCourse = async () => {
         try {
             const response = await fetch(`${api}/getAllCourse`, {
