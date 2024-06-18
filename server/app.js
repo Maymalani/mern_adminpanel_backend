@@ -60,4 +60,10 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'adminpanel', 'build','index.html')));
 }
 
+var port = process.env.PORT || '4000';
+
+app.listen(port,() => {
+  console.log(`Server is running on PORT : ${port}`);
+})
+
 module.exports = app;
