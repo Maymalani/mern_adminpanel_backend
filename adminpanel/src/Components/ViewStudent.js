@@ -8,7 +8,7 @@ import errorImage from "../assets/Capture.JPG"
 const ViewStudent = () => {
 
   const [tableData, setTableData] = useState([]);
-  const { authorizationToken, allStudentData, getAllStudent, api } = useAuth();
+  const { authorizationToken, allStudentData, getAllStudent, api ,setAllStudentData} = useAuth();
   const [show, setShow] = useState(false);
   const [imageUpdateId, setImageUpdateId] = useState("");
   const [studentData, setStudentData] = useState([]);
@@ -45,7 +45,11 @@ const ViewStudent = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setTableData(data);
+        if (data.length > 0) {
+          setAllStudentData(data);
+        } else {
+          setAllStudentData(allStudentData)
+        }
       }
     } else {
       getAllStudent();
