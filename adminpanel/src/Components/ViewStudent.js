@@ -170,8 +170,8 @@ const ViewStudent = () => {
                             <td>{val.parentMobile}</td>
                             <td>
                               <NavLink to={`/updateStudent/${val._id}`}><i className="fa-regular fa-pen-to-square cursor-pointer text-purple-500 mr-3" title='Update Student Data'></i></NavLink>
-                              <NavLink to={`https://wa.me/+91${val.studentMobile}?`} target='_blank' title='Student Whatsapp'><i className="fa-brands fa-whatsapp cursor-pointer text-green-500 mr-3"></i></NavLink>
-                              <NavLink to={`https://wa.me/+91${val.parentMobile}?`} target='_blank' title='Parent Whatsapp'><i className="fa-brands fa-whatsapp cursor-pointer text-green-500 mr-3"></i></NavLink>
+                              <NavLink to={`https://wa.me/+91${val.studentWhatsapp}?`} target='_blank' title='Student Whatsapp'><i className="fa-brands fa-whatsapp cursor-pointer text-green-500 mr-3"></i></NavLink>
+                              <NavLink to={`https://wa.me/+91${val.parentWhatsapp}?`} target='_blank' title='Parent Whatsapp'><i className="fa-brands fa-whatsapp cursor-pointer text-green-500 mr-3"></i></NavLink>
                               <i className="fa-solid fa-ellipsis-vertical cursor-pointer" title='More Details' onClick={() => handleShow(val._id)}></i>
                             </td>
                           </tr>
