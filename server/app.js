@@ -46,6 +46,10 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+app.get("/",(req,res) => {
+  res.send("Hello")
+});
+
 // error handler
 app.use(errorMiddleware);
 
