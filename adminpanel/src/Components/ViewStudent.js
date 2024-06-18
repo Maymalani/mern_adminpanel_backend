@@ -183,7 +183,7 @@ const ViewStudent = () => {
                             <td>{ind + 1}</td>
                             <td>
                               <div className='flex flex-col'>
-                                <img src={val.image ? `http://localhost:4000/Images/${val.image}` : errorImage} className='w-[80px] h-[100px] mr-2' alt={`${val.studentname}`} />
+                                <img src={val.image ? `http://localhost:4000/Images/${val.image}` : errorImage} className='w-[40px] h-[50px] sm:w-[80px] sm:h-[100px] mr-2' alt={`${val.studentname}`} />
                                 <div className={`flex justify-start mt-2`}>
                                   <i className={`fa-solid fa-pen mr-2 cursor-pointer`} onClick={() => modelImage(val._id)}></i>
                                   <i className={`fa-solid fa-trash cursor-pointer text-red-500 ${val.image ? "block" : "hidden"}`} onClick={() => deleteImage(val._id)}></i>
