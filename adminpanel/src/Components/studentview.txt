@@ -1,0 +1,131 @@
+<Modal.Header closeButton>
+              <Modal.Title className='text-purple-500'>{`Details For ${studentData.studentname} ${studentData.surname}`}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="flex flex-wrap gap-3 justify-between">
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Surname</span>
+                  <p className='text-text-dark'>{studentData.surname ? studentData.surname : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Student Name</span>
+                  <p className='text-text-dark'>{studentData.studentname ? studentData.studentname : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Student Contact</span>
+                  <p className='text-text-dark'>{studentData.studentMobile ? studentData.studentMobile : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Student WhatsApp</span>
+                  <p className='text-text-dark'>{studentData.studentWhatsapp ? studentData.studentWhatsapp : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Parent Contact</span>
+                  <p className='text-text-dark'>{studentData.parentMobile ? studentData.parentMobile : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Parent WhatsApp</span>
+                  <p className='text-text-dark'>{studentData.parentWhatsapp ? studentData.parentWhatsapp : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Address</span>
+                  <p className='text-text-dark'>{studentData.address ? studentData.address : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Date</span>
+                  <p className='text-text-dark'>{studentData.date ? studentData.date : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Qualification</span>
+                  <p className='text-text-dark'>{studentData.qualification ? studentData.qualification : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>References</span>
+                  <p className='text-text-dark'>{studentData.references ? studentData.references : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Reference Name</span>
+                  <p className='text-text-dark'>{studentData.referencesName ? studentData.referencesName : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Course</span>
+                  <p className='text-text-dark'>{studentData.course ? studentData.course : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Course Duration</span>
+                  <p className='text-text-dark'>{studentData.courseDuration ? studentData.courseDuration : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Daily Time</span>
+                  <p className='text-text-dark'>{studentData.dailyTime ? studentData.dailyTime : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Course Content</span>
+                  <p className='text-text-dark'>{studentData.courseContent ? studentData.courseContent : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Total Fees</span>
+                  <p className='text-text-dark'>{studentData.totalFees ? studentData.totalFees : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Joining Date</span>
+                  <p className='text-text-dark'>{studentData.joiningDate ? studentData.joiningDate : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Ending Date</span>
+                  <p className='text-text-dark'>{studentData.endingDate ? studentData.endingDate : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Job Responsibility</span>
+                  <p className='text-text-dark'>{studentData.jobResponse ? studentData.jobResponse : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Installment Details 1</span>
+                  <p className='text-text-dark'>{studentData.installmentDetails ? studentData.installmentDetails : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Installment Details 2</span>
+                  <p className='text-text-dark'>{studentData.installmentDetails1 ? studentData.installmentDetails1 : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Installment Details 3</span>
+                  <p className='text-text-dark'>{studentData.installmentDetails2 ? studentData.installmentDetails2 : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Installment Details 4</span>
+                  <p className='text-text-dark'>{studentData.installmentDetails3 ? studentData.installmentDetails3 : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Feculty</span>
+                  <p className='text-text-dark'>{studentData.feculty ? studentData.feculty : '-'}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Batch</span>
+                  <p className='text-text-dark'>{studentData.batch ? studentData.batch : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Running Topic</span>
+                  <p className='text-text-dark'>{studentData.runningTopic ? studentData.runningTopic : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Pc/Laptop</span>
+                  <p className='text-text-dark'>{studentData.pc_laptop ? studentData.pc_laptop : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Pc No</span>
+                  <p className='text-text-dark'>{studentData.pcNo ? studentData.pcNo : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Laptop Compulsory</span>
+                  <p className='text-text-dark'>{studentData.laptopCompulsory ? studentData.laptopCompulsory : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Extra Notes</span>
+                  <p className='text-text-dark'>{studentData.extraNote ? studentData.extraNote : "-"}</p>
+                </div>
+                <div>
+                  <span className='text-xs sm:text-sm lg:text-md text-muted'>Reception Notes</span>
+                  <p className='text-text-dark'>{studentData.receptionNotes ? studentData.receptionNotes : "-"}</p>
+                </div>
+              </div>
+            </Modal.Body>
