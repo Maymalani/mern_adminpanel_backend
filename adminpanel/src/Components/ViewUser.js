@@ -178,7 +178,7 @@ const ViewUser = () => {
                 <span className='my-3 text-red-500' style={{ display: inputError.length > 0 ? "block" : "none" }}>{inputError}</span>
               </Modal.Body>
               <Modal.Footer>
-                <button type='submit' className='px-3 py-2 rounded-md bg-purple-500 hover:text-purple-600 text-white'>
+                <button type='submit' className='px-3 py-2 rounded-md bg-purple-500 hover:bg-purple-600 text-white'>
                   Save Changes
                 </button>
               </Modal.Footer>
@@ -193,7 +193,7 @@ const ViewUser = () => {
               <h1>Are You Sure To Delete User ?</h1>
             </Modal.Body>
             <Modal.Footer>
-              <button className='px-3 py-2 rounded-md bg-red-500 hover:text-red-600 text-white' onClick={() => deleteUser(deleteId)}>
+              <button className='px-3 py-2 rounded-md bg-red-500 hover:bg-red-600 text-white' onClick={() => deleteUser(deleteId)}>
                 Delete User
               </button>
             </Modal.Footer>

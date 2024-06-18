@@ -10,7 +10,7 @@ const AddCourse = () => {
   if (user) {
     userEmail = user.email;
   }
-  console.log(userEmail);
+  
   const courseObj = {
     addedBy: userEmail,
     course: ''
