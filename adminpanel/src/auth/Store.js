@@ -160,7 +160,7 @@ export const AuthProvider = ({ children }) => {
     }, [token]);
 
     return (
-        <AuthContext.Provider value={{api, storeTokenInLs, isLoggedIn, Logout, authorizationToken, user, getAllStudent, getAllCourse, allUser, getAllUsers, courseData, allStudentData, getCourseWoContent, courseWoContent, allCourseContent, getAllCourseContent, updateContentStatus }}>
+        <AuthContext.Provider value={{ api, storeTokenInLs, isLoggedIn, Logout, authorizationToken, user, getAllStudent, getAllCourse, allUser, getAllUsers, courseData, allStudentData, getCourseWoContent, courseWoContent, allCourseContent, getAllCourseContent, updateContentStatus, setAllStudentData }}>
             {children}
         </AuthContext.Provider>
     )
