@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     const [allUser, setAllUser] = useState([]);
     const [courseWoContent, setCourseWoContent] = useState([]);
     const [allCourseContent, setAllCourseContent] = useState([]);
-    const api = "http://localhost:4000"
+    const api = "https://mern-adminpanel1.onrender.com"
 
     const storeTokenInLs = (token) => {
         setToken(token);
